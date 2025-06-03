@@ -2,33 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Sign Up</title>
 </head>
 <body>
-    <h1>Register</h1>
+    <h1>Make a New Account</h1>
+
     <form method="POST">
         {{ form.hidden_tag() }}
-        <label for="email">Email:</label>
-        {{ form.email() }}
+
+        <label>Your Email:</label><br>
+        {{ form.email(size=32) }}<br>
+        {% if form.email.errors %}
+            <p>{{ form.email.errors[0] }}</p>
+        {% endif %}
         <br>
-        <label for="password">Password:</label>
-        {{ form.password() }}
+
+        
+        <label>Create a Password:</label><br>
+        {{ form.password(size=32) }}<br>
+        {% if form.password.errors %}
+            <p>{{ form.password.errors[0] }}</p>
+        {% endif %}
+        <p>Use big and small letters, numbers, and a symbol (like @ or #)</p><br>
+
+        
+        <label>Answer this question:</label><br>
+        <b>{{ captcha_question }}</b><br>
+        {{ form.captcha(size=6) }}<br>
+        {% if form.captcha.errors %}
+            <p>{{ form.captcha.errors[0] }}</p>
+        {% endif %}
         <br>
-        <label for="captcha">What is 3 + 4?</label>
-        {{ form.captcha() }}
-        <br>
-        <button type="submit">Register</button>
+
+        {{ form.submit() }}
     </form>
+
+    
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         <ul>
         {% for category, message in messages %}
-            <li class="{{ category }}">{{ message }}</li>
+            <li>{{ message }}</li>
         {% endfor %}
         </ul>
     {% endif %}
     {% endwith %}
-    <a href="{{ url_for('home') }}">Back to Home</a>
+
+    <br>
+    <a href="{{ url_for('home') }}">Go Back Home</a>
 </body>
 </html>
+
+
+
+

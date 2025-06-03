@@ -2,30 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login Page</title>
 </head>
 <body>
     <h1>Login</h1>
+
     <form method="POST">
         {{ form.hidden_tag() }}
-        <label for="email">Email:</label>
-        {{ form.email() }}
-        <br>
-        <label for="password">Password:</label>
-        {{ form.password() }}
-        <br>
-        <button type="submit">Login</button>
+
+        <p>
+            <label>Email:</label><br>
+            {{ form.email(size=32) }}<br>
+            {% if form.email.errors %}
+                <p>Oops! {{ form.email.errors[0] }}</p>
+            {% endif %}
+        </p>
+
+        
+        <p>
+            <label>Password:</label><br>
+            {{ form.password(size=32) }}<br>
+            {% if form.password.errors %}
+                <p>Oops! {{ form.password.errors[0] }}</p>
+            {% endif %}
+        </p>
+
+        <p>{{ form.submit() }}</p>
     </form>
+
+    
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         <ul>
         {% for category, message in messages %}
-            <li class="{{ category }}">{{ message }}</li>
+            <li>{{ message }}</li>
         {% endfor %}
         </ul>
     {% endif %}
     {% endwith %}
-    <a href="{{ url_for('home') }}">Back to Home</a>
+
+    <p><a href="{{ url_for('home') }}">Go Back Home</a></p>
 </body>
 </html>
+
+
+

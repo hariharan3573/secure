@@ -1,20 +1,37 @@
 # Secure Login Project
-
-This is a project for a secure login system built with Flask.
+     A secure user authentication system built using **Flask**. It allows users to register, verify their email using an **OTP (One-Time Password)**, and log in to a protected dashboard. It includes CAPTCHA validation, strong password rules, and secure session handling.
 
 ## Description
-This project demonstrates a simple yet secure login and registration system using Flask, including email verification and password hashing.
+      This is a secure Flask web application for user registration and login, built with best practices in mind. It ensures new users are human (CAPTCHA), verifies their identity via a time-limited OTP sent to email, and safely stores passwords using Bcrypt hashing.
 
 ## Technologies Used
-- Flask
-- HTML/CSS
-- Flask-Mail (for email verification)
-- bcrypt (for password hashing)
+Python 3.x ::	Core programming language
+Flask	Lightweight :: Python web framework
+Flask-Mail ::	Sends OTP emails to users
+Flask-Bcrypt ::	Hashes and checks passwords securely
+Flask-WTF ::	Handles form rendering and validation with CSRF protection
+WTForms ::	Provides form fields and validators
+Flask-SQLAlchemy ::	ORM for handling user data with SQLite
+SQLite ::	Local database for storing user accounts
+Jinja2 ::	HTML templating engine for rendering dynamic pages
+python-dotenv ::	Loads .env secrets (email, password) into the app securely
+HTML ::	Basic page structure 
 
 ## Installation Instructions
 To run this project locally, follow the steps below:
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/hariharan3573/secure.git
+   git clone https://github.com/hariharan3573/flask-auth-system.git
+cd flask-auth-system
+
+2. Create a Virtual Environment:
+      python -m venv venv
+      venv\Scripts\activate
+
+3. Install Required Packages
+      pip install -r requirements.txt
+
+4. Run the Application
+      python app.py
+
 # secure

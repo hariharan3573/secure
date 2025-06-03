@@ -10,12 +10,9 @@
 
     <form method="POST">
         {{ form.hidden_tag() }}
-
-        <label for="otp">Enter OTP:</label><br>
-        {{ form.otp(size=32) }}  <!-- use the form field here -->
-        <br><br>
-
-        {{ form.submit() }} <!-- use the form's submit button -->
+        <label>Enter OTP:</label><br>
+        {{ form.otp(size=32) }}<br><br>
+        {{ form.submit() }}
     </form>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -28,7 +25,7 @@
     {% endif %}
     {% endwith %}
 
-    <br>
     <a href="{{ url_for('resend_otp') }}">Resend OTP</a>
 </body>
 </html>
+
